@@ -1,0 +1,43 @@
+﻿
+@model Tfl.Api.Presentation.Entities.RouteSearchResponse
+
+@{
+    ViewBag.Title = "Поиск станций";
+}
+
+<h2 style="text-align: center">Поиск по станции</h2>
+<div style="text-align: center"><br/>
+    <form method="get">
+        <p>
+            <input type="search" name="Term" placeholder="пример: victoria"/>
+            <input type="submit" value="Поиск"/>
+        </p>
+    </form>
+    <br/>
+</div>
+@if (Model.SearchMatches != null)
+{
+    foreach (var item in Model.SearchMatches)
+    {
+        <p>
+            <b>Название станции:</b> @item.LineName</p>
+        foreach (var item1 in item.LineRouteSection)
+        {
+            <hr style="background-color: black; border: none; color: black; height: 2px">
+            <p>
+                <b>Место назначения:</b> @item1.Destination</p>
+            <p>
+                <b>Направление:</b> @item1.Direction</p>
+            <p>
+                <b>От станции:</b> @item1.FromStation</p>
+            <p>
+                <b>Маршрут Id:</b> @item1.RouteId</p>
+            <p>
+                <b>Тип обслуживания:</b> @item1.ServiceType</p>
+            <p>
+                <b>До станции:</b> @item1.ToStation</p>
+            <p>
+                <b>Назначение транспортного средства:</b> @item1.VehicleDestinationText</p>
+        }
+    }
+}

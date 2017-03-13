@@ -1,0 +1,59 @@
+﻿@model Tfl.Api.Presentation.Entities.LondonAirForecast
+@{
+    ViewBag.Title = "Качество воздуха";
+}
+
+<h2 style="text-align: center">Качество воздуха</h2>
+<p>
+    <b>@Model.DisclaimerText</b>
+</p>
+<p>
+    <a href="@Model.ForecastURL">@Model.ForecastURL</a>
+</p>
+<p>
+    <b>Частота обновления: </b>@Model.UpdateFrequency
+</p>
+<p>
+    <b>Период обновления: </b>@Model.UpdatePeriod
+</p>
+
+@foreach (var currentForecast in Model.CurrentForecast)
+{
+    <hr style="background-color: black; border: none; color: black; height: 2px">
+    <p>
+        <b>Тип прогноза: </b>@currentForecast.ForecastType
+    </p>
+    <p>
+        <b>ID прогноза: </b>@currentForecast.ForecastID
+    </p>
+        <p>
+            <b>Дата публикации: </b>@currentForecast.PublishedDate
+        </p>
+        <p>
+            <b>С даты: </b>@currentForecast.FromDate
+        </p>
+        <p>
+            <b>По дату: </b>@currentForecast.ToDate
+        </p>
+        <p>
+            <b>Диапозон прогноза: </b>@currentForecast.ForecastBand
+        </p>
+        <p>
+            <b>Сводка прогноза: </b>@currentForecast.ForecastSummary
+        </p>
+        <p>
+            <b>Диапозон NO2: </b>@currentForecast.NO2Band
+        </p>
+        <p>
+            <b>Диапозон O3: </b>@currentForecast.O3Band
+        </p>
+        <p>
+            <b>Диапозон PM10: </b>@currentForecast.PM10Band
+        </p>
+        <p>
+            <b>Диапозон PM25: </b>@currentForecast.PM25Band
+        </p>
+        <p>
+            <b>Диапозон SO2: </b>@currentForecast.SO2Band
+        </p>
+}
